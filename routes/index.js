@@ -8,4 +8,4 @@ router.use((req, res) => {
     return res.send('Wrong route!');
 });
 
-model.exports = router;
+module.exports = router;
