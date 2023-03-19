@@ -23,4 +23,14 @@ module.exports = {
                 (dbUserData))
             .catch((err) => res.status(500).json(err));
     },
+
+    // add a friend
+    addFriend(req, res) {
+        User.findOneAndUpdate({ _id: req.params.userId}, { $addToSet: { friends: req.params.friendId}}, { new: false })
+        .then((user) =>
+                !user
+                    ? res.status(404).json({ message: "No user found with that id" })
+                    : res.json(user))
+            .catch((err) => res.status(500).json(err));
+    }
 };
