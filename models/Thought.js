@@ -18,6 +18,10 @@ const thoughtSchema = new Schema(
             required: true,
             ref: 'user'
         },
+        userId: {
+            type: Schema.Types.ObjectId, 
+            ref: 'user'
+        },
         reactions: [reactions]
     }
 );
