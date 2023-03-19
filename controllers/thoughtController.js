@@ -40,9 +40,21 @@ module.exports = {
             });
     },
     
-    // updateThought(req, res) {
-
-    // },
+    updateThought(req, res) {
+        Thought.findOneAndUpdate(
+            { _id: req.params.thoughtId },
+            { $set: req.body },
+        )
+        .then((thought) => 
+        !thought 
+            ? res.status(404).json({ message: "no thought found with that ID "})
+            : res.json(thought)
+            )
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    },
 
     // deleteThought(req, res) {
 
