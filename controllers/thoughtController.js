@@ -79,6 +79,7 @@ module.exports = {
         .catch((err) => res.status(500).json(err));
     },
 
+    // adds a reaction
     addReaction(req, res) {
         Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
@@ -93,6 +94,7 @@ module.exports = {
                 .catch((err) => res.status(500).json(err));
     },
 
+    // deletes a reaction
     deleteReaction (req, res) {
         Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
