@@ -7,6 +7,7 @@ module.exports = {
             .then((user) => res.json(user))
             .catch((err) => res.status(500).json(err));
     },
+
     // gets one user
     getSingleUser(req, res) {
         User.findOne({ _id: req.params.userId })
@@ -19,6 +20,7 @@ module.exports = {
                     : res.json(user))
             .catch((err) => res.status(500).json(err));
     },
+    
     // creates a user
     createUser(req, res) {
         User.create(req.body)
