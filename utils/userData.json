@@ -1,7 +1,7 @@
 [
     {
         "username": "user1",
-        "email": "user1email",
+        "email": "user1@mail.com",
         "thoughts": [],
         "friends": [] 
     },
