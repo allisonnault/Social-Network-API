@@ -14,12 +14,7 @@ const userSchema = new Schema(
             type: String,
             unique: true, 
             required: true,
-            validate: {
-                validator: isEmail,
-                message: '{VALUE} is not a valid email',
-                isAsync: false
-            },
-            // matches: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/]
+            match: [/.+@.+\..+/, 'Must match an email address!'],
         },
         thoughts: [{ type: Schema.Types.ObjectId, ref: 'thought' }],
         friends: [{ type: Schema.Types.ObjectId, ref: 'user' }]
