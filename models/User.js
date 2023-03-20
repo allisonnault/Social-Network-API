@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const { isEmail } = require('validator');
 
 
 const userSchema = new Schema(
@@ -13,7 +14,12 @@ const userSchema = new Schema(
             type: String,
             unique: true, 
             required: true,
-            matches: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+            validate: {
+                validator: isEmail,
+                message: '{VALUE} is not a valid email',
+                isAsync: false
+            },
+            // matches: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/]
         },
         thoughts: [{ type: Schema.Types.ObjectId, ref: 'thought' }],
         friends: [{ type: Schema.Types.ObjectId, ref: 'user' }]
